@@ -8,34 +8,32 @@
   </header>
 </template>
 <style lang="less" scoped>
-header {
-  margin-top: 0;
-  background-color: #C73E3A;
-  h1 {
-    text-align: center;
-    font-size: 18px;
-    font-family: 微软雅黑,serif;
-    margin: 0;
-    padding: 8px 0 3px 0;
+  header {
+    margin-top: 0;
+    background-color: #C73E3A;
+    h1 {
+      text-align: center;
+      font-size: 18px;
+      font-family: 微软雅黑, serif;
+      margin: 0;
+      padding: 8px 0 3px 0;
+    }
+    button {
+      border: none;
+      background: none;
+      margin: 0px 5px 8px 5px;
+      border: 1px solid white;
+      border-radius: 5px;
+      padding: 3px 6px;
+      outline: none;
+    }
+    .publish {
+      float: right;
+
+    }
+    .learn-more {
+    }
   }
-  .publish {
-    float: right;
-    border: none;
-    background: none;
-    margin: 0px 5px 8px 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 3px 6px;
-  }
-  .learn-more {
-    border: none;
-    background: none;
-    margin: 0px 5px 8px 5px;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 3px 6px;
-  }
-}
 </style>
 <script>
   import router from '../config/router'
