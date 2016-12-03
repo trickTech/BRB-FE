@@ -2,18 +2,21 @@
   <div id="app">
     <br-header></br-header>
     <router-view></router-view>
+    <br-footer></br-footer>
   </div>
 </template>
 
 <script>
   import PostEvent from './components/PostEvent'
   import BrHeader from './components/Header.vue'
+  import BrFooter from './components/Footer'
 
   export default {
     name: 'app',
     components: {
       PostEvent,
-      BrHeader
+      BrHeader,
+      BrFooter
     }
   }
 </script>

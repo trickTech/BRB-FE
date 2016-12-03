@@ -4,10 +4,17 @@
 
 import VueRouter from 'vue-router'
 import About from '../components/About.vue'
+import PostNew from '../components/PostEvent.vue'
 
 const routes = [
-  {path: '/about', component: About}
-  // { path: '/addnew', component: Bar }
+  {
+    path: '/about',
+    component: About
+  },
+  {
+    path: '/addnew',
+    component: PostNew
+  }
 ]
 
 const router = new VueRouter({

@@ -50,7 +50,7 @@ header {
         router.push('about')
       },
       publishNew () {
-        console.log(345)
+        router.push('addnew')
       }
     }
   }
