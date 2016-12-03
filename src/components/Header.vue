@@ -38,6 +38,7 @@ header {
 }
 </style>
 <script>
+  import router from '../config/router'
   export default{
     data () {
       return {
@@ -46,8 +47,7 @@ header {
     },
     methods: {
       learnMore () {
-        console.log(123)
-        this.modalStatus = true
+        router.push('about')
       },
       publishNew () {
         console.log(345)
