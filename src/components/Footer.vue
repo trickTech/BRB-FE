@@ -13,10 +13,10 @@
       outline: none;
       border: none;
       background: none;
-      border: 1px solid white;
-      border-radius: 5px;
+      border: 1px solid #ff7c72;
       box-sizing: border-box;
       width: 50%;
+      padding: 5px 0;
     }
   }
 

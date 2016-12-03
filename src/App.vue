@@ -7,14 +7,12 @@
 </template>
 
 <script>
-  import PostEvent from './components/PostEvent'
   import BrHeader from './components/Header.vue'
   import BrFooter from './components/Footer'
 
   export default {
     name: 'app',
     components: {
-      PostEvent,
       BrHeader,
       BrFooter
     }

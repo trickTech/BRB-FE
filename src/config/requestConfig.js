@@ -4,7 +4,8 @@
 
 let baseUrl = 'http://115.159.184.76:23333/'
 const requestConfig = {
-  postEvent: baseUrl + 'events/'
+  postEvent: baseUrl + 'events/',
+  getEvent: baseUrl + 'events/'
 }
 
 module.exports = requestConfig
