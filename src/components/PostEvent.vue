@@ -15,11 +15,21 @@
   import API from '../config/requestConfig'
   export default{
     data () {
-      return {}
+      return {
+        title: '',
+        content: ''
+      }
     },
     methods: {
       submitEvent () {
-
+        let postData = {
+          title: this.title,
+          content: this.content,
+          event_type: 0
+        }
+        this.$http.post(API.postEvent, postData).then(function (res) {
+          console.log(res)
+        })
       }
     },
     components: {}
