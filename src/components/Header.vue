@@ -2,8 +2,8 @@
   <header>
     <h1>石大红黑榜</h1>
     <div>
-      <button class="learn-more">了解更多</button>
-      <button class="publish">我要发布</button>
+      <button class="learn-more" v-on:click="learnMore">了解更多</button>
+      <button class="publish" v-on:click="publishNew">我要发布</button>
     </div>
   </header>
 </template>
@@ -18,7 +18,8 @@ header {
     margin: 0;
     padding: 8px 0 3px 0;
   }
-  button {
+  .publish {
+    float: right;
     border: none;
     background: none;
     margin: 0px 5px 8px 5px;
@@ -26,14 +27,31 @@ header {
     border-radius: 5px;
     padding: 3px 6px;
   }
-  .publish {
-    float: right;
-  }
   .learn-more {
-
+    border: none;
+    background: none;
+    margin: 0px 5px 8px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 3px 6px;
   }
 }
 </style>
 <script>
-  export default{}
+  export default{
+    data () {
+      return {
+        modalStatus: false
+      }
+    },
+    methods: {
+      learnMore () {
+        console.log(123)
+        this.modalStatus = true
+      },
+      publishNew () {
+        console.log(345)
+      }
+    }
+  }
 </script>
