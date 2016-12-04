@@ -5,8 +5,13 @@
 import VueRouter from 'vue-router'
 import About from '../components/About.vue'
 import PostNew from '../components/PostEvent.vue'
+import MainList from '../components/MainList.vue'
 
 const routes = [
+  {
+    path: '/',
+    component: MainList
+  },
   {
     path: '/about',
     component: About
