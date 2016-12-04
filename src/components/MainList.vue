@@ -26,8 +26,18 @@
       } else {
         // if ()
         // window.location.href = 'https://openapi.yiban.cn/oauth/authorize?client_id=07f11a3f2773e24e&redirect_uri=http://f.yiban.cn/iapp28401&display=html'
-        console.log(getQueryString('verify_request'))
-        console.log(getQueryString('yb_uid'))
+        // console.log(getQueryString('verify_request'))
+        // console.log(getQueryString('yb_uid'))
+        if (getQueryString('verify_request') === null) {
+          window.location.href = 'https://openapi.yiban.cn/oauth/authorize?client_id=07f11a3f2773e24e&redirect_uri=http://f.yiban.cn/iapp28401&display=html'
+        } else {
+          let postData = {
+            msg: getQueryString('verify_request')
+          }
+          this.$http.post(API.auth, postData).then(function (res) {
+            console.log(res)
+          })
+        }
       }
     },
     methods: {
