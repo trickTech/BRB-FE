@@ -71,7 +71,7 @@
         })
       },
       goback () {
-
+        this.$router.push('/')
       }
     },
     components: {}
