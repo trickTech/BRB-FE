@@ -5,7 +5,7 @@
 </template>
 <style lang="less" scoped>
   .footer-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 
@@ -17,6 +17,14 @@
       box-sizing: border-box;
       width: 50%;
       padding: 5px 0;
+      font-size: 18px;
+      color: white;
+      background-color: red;
+      font-family: 华文琥珀,serif;
+    }
+
+    .black {
+      color: #000;
     }
   }
 

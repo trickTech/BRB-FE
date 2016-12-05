@@ -1,13 +1,30 @@
 <template>
   <div class="main-container">
     <div class="detail" v-for="item in list">
-      <p>{{item.title}}</p>
-      <p>{{item.content}}</p>
+      <p class="title">{{item.title}}</p>
+      <p class="content">{{item.content}}</p>
+      <p class="clearfix">
+        <span class="author">{{item.author}}</span>
+        <button class="vote-btn">&#x1f44d;</button>
+        <button class="vote-btn">&#x1f44e;</button>
+      </p>
     </div>
   </div>
 </template>
 <style lang="less" scoped>
+  .main-container {
+    margin-bottom: 30px;
+  }
 
+  .detail {
+    border: solid 1px black;
+    margin: 10px 5px;
+    clear: both;
+
+    .vote-btn {
+      float: right;
+    }
+  }
 </style>
 <script>
   import API from '../config/requestConfig'
