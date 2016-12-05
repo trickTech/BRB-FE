@@ -64,4 +64,13 @@ table {
 	border-spacing: 0;
 }
 
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+
 </style>
