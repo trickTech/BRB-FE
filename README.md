@@ -1,4 +1,5 @@
 # brb
+[![Build Status](https://travis-ci.org/trickTech/BRB-FE.svg?branch=master)](https://travis-ci.org/trickTech/BRB-FE)
 
 > A Vue.js project
 
