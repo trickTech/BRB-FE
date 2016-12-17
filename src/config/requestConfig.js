@@ -9,7 +9,7 @@ const requestConfig = {
   getEvent: baseUrl + 'events/',
   isLogin: baseUrl + 'auth/islogin/',
   auth: baseUrl + 'auth/auth/',
-  goYibanOauth: ''
+  goYibanOauth: process.env.goYibanOauth
 }
 
 module.exports = requestConfig

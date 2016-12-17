@@ -47,7 +47,7 @@
         console.log(123)
       } else {
         if (getQueryString('verify_request') === null) {
-          window.location.href = 'https://openapi.yiban.cn/oauth/authorize?client_id=07f11a3f2773e24e&redirect_uri=http://f.yiban.cn/iapp28401&display=html'
+          window.location.href = API.goYibanOauth
         } else {
           this.$http.post(API.auth, {'verify_request': getQueryString('verify_request')}).then(function (res) {
             console.log(res)
@@ -66,7 +66,6 @@
       getIsLogin () {
         this.$http.get(API.isLogin).then(function (res) {
           console.log(res.data)
-
         })
       }
     }
