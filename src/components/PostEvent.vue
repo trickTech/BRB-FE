@@ -20,48 +20,38 @@
     color: buttonface;
     padding-top: 60px;
 
-  .title {
-    width: 90%;
-    height: 35px;
-    margin: 20px 0;
-    outline: none;
-  }
+    .title {
+      width: 90%;
+      height: 35px;
+      margin: 20px 0;
+      outline: none;
+    }
 
-  .content {
-    width: 90%;
-    height: 100px;
-    outline: none;
-    resize: none;
-  }
+    .content {
+      width: 90%;
+      height: 100px;
+      outline: none;
+      resize: none;
+    }
 
-  .typeradio {
-    margin-top: 20px;
-  }
+    .typeradio {
+      margin-top: 20px;
+    }
 
-  .submit {
-    width: 90%;
-    border-radius: 0;
-    height: 40px;
-    margin-top: 20px;
-    outline: none;
-    border: none;
-    border: 1px solid #ffffff;
-  }
+    .submit {
+      width: 90%;
+      border-radius: 0;
+      height: 40px;
+      margin-top: 20px;
+      outline: none;
+      border: none;
+      border: 1px solid #ffffff;
+    }
 
-  .error {
-    color: red;
-    margin-top: 20px;
-  }
-
-  .back {
-    color: #666;
-    font-size: 12px;
-    margin: 10px;
-    border: none;
-    background-color: #ffffff;
-    outline: none;
-  }
-
+    .error {
+      color: red;
+      margin-top: 20px;
+    }
   }
 </style>
 <script>
@@ -86,8 +76,6 @@
         let that = this
 
         if (!this.checkForm()) {
-          that.failed = true
-          this.errorMsg = '您输入的数据有误,请检查后重新提交'
           return
         }
         this.$http.post(API.postEvent, postData).then(function (res) {
@@ -101,8 +89,11 @@
       },
       checkForm () {
         if (this.title !== '' && this.content !== '' && this.event_type !== null) {
+          this.failed = false
           return true
         } else {
+          this.failed = true
+          this.errorMsg = '您输入的数据有误,请检查后重新提交'
           return false
         }
       },
