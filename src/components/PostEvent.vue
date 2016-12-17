@@ -19,6 +19,7 @@
     font-size: 16px;
     color: buttonface;
     padding-top: 60px;
+    /*background-size:100% 100%;*/
 
     .title {
       width: 90%;
@@ -46,6 +47,7 @@
       outline: none;
       border: none;
       border: 1px solid #ffffff;
+      color: #fff;
     }
 
     .error {

@@ -9,7 +9,7 @@
 <style>
   #app {
   /*background: #58a;*/
-    height: 100vh;
+    min-height: 100vh;
     /*background: linear-gradient(-45deg, transparent 185px, #58a 0),*/
     /*linear-gradient(45deg, transparent 15px, #655 0);*/
     background: repeating-linear-gradient(-45deg, #acadad, #acadad 20%, #959696 0, #959696 80%);}

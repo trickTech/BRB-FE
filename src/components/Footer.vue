@@ -1,6 +1,6 @@
 <template>
   <footer class="footer-container">
-    <button class="red">红榜</button><button class="black">黑榜</button>
+    <button class="red" v-on:click="changeType(0)">红榜</button><button class="red" v-on:click="changeType(1)">黑榜</button>
   </footer>
 </template>
 <style lang="less" scoped>
@@ -16,19 +16,23 @@
       border: 1px solid #ff7c72;
       box-sizing: border-box;
       width: 50%;
-      padding: 5px 0;
+      padding: 10px 0;
       font-size: 18px;
       color: white;
-      background-color: red;
+      background-color: #611e20;
       font-family: 华文琥珀,serif;
-    }
-
-    .black {
-      color: #000;
     }
   }
 
 </style>
 <script>
-  export default{}
+  import bus from '../util/eventBus'
+
+  export default{
+    methods: {
+      changeType (type) {
+        bus.$emit('showList', type)
+      }
+    }
+  }
 </script>

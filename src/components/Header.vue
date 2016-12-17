@@ -10,7 +10,10 @@
 <style lang="less" scoped>
   header {
     margin-top: 0;
-    background-color: #C73E3A;
+    background-color: #611e20;
+    color: #fff;
+    padding: 17px 10px;
+
     h1 {
       text-align: center;
       font-size: 18px;
@@ -22,16 +25,17 @@
       border: none;
       background: none;
       margin: 0px 5px 8px 5px;
-      border: 1px solid white;
-      border-radius: 5px;
-      padding: 3px 6px;
       outline: none;
+      padding: 5px 20px;
     }
     .publish {
       float: right;
-
+      color: #fff;
+      background: rgba(255, 255, 255, 0.5);
     }
     .learn-more {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.5);
     }
   }
 </style>
