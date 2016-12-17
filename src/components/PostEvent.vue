@@ -4,6 +4,10 @@
     <br/>
     <textarea v-model="content" placeholder="内容" class="content"></textarea>
     <br/>
+    <div class="typeradio">
+      <input type="radio" v-model="event_type" value="0">红榜
+      <input type="radio" v-model="event_type" value="1">黑榜
+    </div>
     <button type="button" v-on:click="submitEvent" class="submit">提交</button>
     <button type="button" v-on:click="goback" class="back">返回主页面</button>
   </div>
@@ -12,7 +16,7 @@
   .event-content{
     text-align: center;
     font-size: 16px;
-    color: #000;
+    color: buttonface;
     padding-top: 60px;
 
     .title{
@@ -27,6 +31,10 @@
       height: 100px;
       outline: none;
       resize: none;
+    }
+
+    .typeradio{
+      margin-top: 20px;
     }
 
     .submit{
@@ -56,7 +64,8 @@
     data () {
       return {
         title: '',
-        content: ''
+        content: '',
+        event_type: null
       }
     },
     methods: {
@@ -64,10 +73,11 @@
         let postData = {
           title: this.title,
           content: this.content,
-          event_type: 0
+          event_type: parseInt(this.event_type)
         }
         this.$http.post(API.postEvent, postData).then(function (res) {
           console.log(res)
+          this.$router.push('/')
         })
       },
       goback () {

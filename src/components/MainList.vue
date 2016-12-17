@@ -57,9 +57,10 @@
       this.getData()
       if (this.isLogin === false) {
         this.getIsLogin().then(function (res) {
-          if (res.detail.is_login === true) {
+          console.log(res)
+          if (res.data.detail.is_login === true) {
             that.isLogin = true
-            if (res.detail.is_admin === true) {
+            if (res.data.detail.is_admin === true) {
               that.isAdmin = true
             }
           } else {
