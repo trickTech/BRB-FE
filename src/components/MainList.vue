@@ -18,8 +18,22 @@
 
   .detail {
     border: solid 1px black;
-    margin: 10px 5px;
-    clear: both;
+    margin: 5px 0;
+    padding: 5px;
+
+    .title {
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .content {
+      text-indent: 32px;
+    }
+
+    .author {
+      font-size: 12px;
+      vertical-align: sub;
+    }
 
     .vote-btn {
       float: right;
@@ -66,7 +80,7 @@
         let that = this
         this.$http.get(API.getEvent).then(function (res) {
           // console.log(res.data)
-          that.list = res.data
+          that.list = res.data.results
         })
       },
       getIsLogin () {
