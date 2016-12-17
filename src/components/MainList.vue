@@ -29,30 +29,36 @@
 <script>
   import API from '../config/requestConfig'
   import getQueryString from '../util/getQueryString'
-  // import $ from 'jquery'
   export default{
     data () {
       return {
         type: 1,
         list: [],
-        isLogin: false
+        isLogin: false,
+        isAdmin: false
       }
     },
     mounted () {
+      let that = this
       this.getData()
-      this.getIsLogin().then(function () {
-
-      })
-      if (this.getIsLogin()) {
-        console.log(123)
-      } else {
-        if (getQueryString('verify_request') === null) {
-          window.location.href = API.goYibanOauth
-        } else {
-          this.$http.post(API.auth, {'verify_request': getQueryString('verify_request')}).then(function (res) {
-            console.log(res)
-          })
-        }
+      if (this.isLogin === false) {
+        this.getIsLogin().then(function (res) {
+          if (res.detail.is_login === true) {
+            that.isLogin = true
+            if (res.detail.is_admin === true) {
+              that.isAdmin = true
+            }
+          } else {
+            if (getQueryString('verify_request') === null) {
+              window.location.href = API.goYibanOauth
+            } else {
+              this.$http.post(API.auth, {'verify_request': getQueryString('verify_request')}).then(function (res) {
+                window.location.hash = '/'
+                console.log(res)
+              })
+            }
+          }
+        })
       }
     },
     methods: {
@@ -64,9 +70,7 @@
         })
       },
       getIsLogin () {
-        this.$http.get(API.isLogin).then(function (res) {
-          console.log(res.data)
-        })
+        return this.$http.get(API.isLogin)
       }
     }
   }
