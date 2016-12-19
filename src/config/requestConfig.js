@@ -7,6 +7,9 @@ let baseUrl = process.env.baseUrl
 const requestConfig = {
   postEvent: baseUrl + 'events/',
   getEvent: baseUrl + 'events/',
+  vote (id) {
+    return baseUrl + 'events/' + id + '/vote/'
+  },
   isLogin: baseUrl + 'auth/islogin/',
   auth: baseUrl + 'auth/auth/',
   goYibanOauth: process.env.goYibanOauth

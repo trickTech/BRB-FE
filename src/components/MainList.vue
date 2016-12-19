@@ -1,12 +1,13 @@
 <template>
   <div class="main-container">
-    <div class="detail mask" v-for="item in list" v-if="item.event_type === eventType">
+    <div class="detail mask" v-for="item in list">
       <p class="title">{{item.title}}</p>
       <p class="content">{{item.content}}</p>
       <p class="clearfix">
         <span class="author">{{item.author}}</span>
-        <button class="vote-btn">&#x1f44d;</button>
-        <button class="vote-btn">&#x1f44e;</button>
+        <button class="vote-btn" v-on:click="doVote(item, 1)">&#x1f44d;</button>
+        <button class="vote-btn" v-on:click="doVote(item, 0)">&#x1f44e;</button>
+        <span class="vote-count">评分：{{item.vote_count}}</span>
       </p>
     </div>
   </div>
@@ -48,6 +49,11 @@
     .vote-btn {
       float: right;
     }
+
+    .vote-count {
+      float: right;
+      margin-right: 10px;
+    }
   }
 </style>
 <script>
@@ -58,11 +64,13 @@
   export default{
     data () {
       return {
-        type: 1,
+        queryParam: {
+          event_type: 0,
+          order: 'desc'
+        },
         list: [],
         isLogin: false,
-        isAdmin: false,
-        eventType: 0
+        isAdmin: false
       }
     },
     mounted () {
@@ -70,39 +78,57 @@
       this.getData()
       if (this.isLogin === false) {
         this.getIsLogin().then(function (res) {
-          // console.log(res)
           if (res.data.detail.is_login === true) {
             that.isLogin = true
             if (res.data.detail.is_admin === true) {
               that.isAdmin = true
             }
           } else {
-            if (getQueryString('verify_request') === null) {
-              window.location.href = API.goYibanOauth
-            } else {
-              this.$http.post(API.auth, {'verify_request': getQueryString('verify_request')}).then(function (res) {
-                window.location.hash = '/'
-                // console.log(res)
-              })
-            }
+            that.doAuth()
           }
         })
       }
 
       bus.$on('showList', function (type) {
-        that.eventType = type
+        that.queryParam.event_type = type
+        that.getData()
       })
     },
     methods: {
       getData () {
         let that = this
-        this.$http.get(API.getEvent).then(function (res) {
-          // console.log(res.data.results)
+        this.$http.get(API.getEvent, {params: that.queryParam}).then(function (res) {
           that.list = res.data.results
         })
       },
       getIsLogin () {
         return this.$http.get(API.isLogin)
+      },
+      doAuth () {
+        if (getQueryString('verify_request') === null) {
+          window.location.href = API.goYibanOauth
+        } else {
+          this.$http.post(API.auth, {'verify_request': getQueryString('verify_request')}).then(function (res) {
+            window.location.hash = '/'
+          }, function () {
+            // 网络错误
+          })
+        }
+      },
+      doVote (item, type) {
+        let url = API.vote(item.id)
+        let postData = {}
+        if (type === 0) {
+          postData.vote_value = -1
+        } else if (type === 1) {
+          postData.vote_value = 1
+        }
+        this.$http.post(url, postData).then(function (res) {
+          console.log(res)
+          if (res.status === 200) {
+            item.vote_count += postData.vote_value
+          }
+        })
       }
     }
   }
