@@ -81,12 +81,17 @@
           return
         }
         this.$http.post(API.postEvent, postData).then(function (res) {
-          console.log(res)
-          this.$router.push('/')
+          // console.log(res)
+          if (res.status === 201) {
+            this.$router.push('/')
+          } else {
+            that.failed = true
+            that.errorMsg = '服务器错误'
+          }
         }, function (respose) {
           console.log(respose)
           that.failed = true
-          this.errorMsg = '网络异常'
+          that.errorMsg = '网络异常'
         })
       },
       checkForm () {
@@ -95,7 +100,7 @@
           return true
         } else {
           this.failed = true
-          this.errorMsg = '您输入的数据有误,请检查后重新提交'
+          this.errorMsg = '您输入的数据不完整,请检查后重新提交'
           return false
         }
       },
